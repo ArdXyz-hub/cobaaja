@@ -1,0 +1,43 @@
+<!-- HTML -->
+<div id="loader" class="loader">
+  <div class="spinner"></div>
+</div>
+
+<!-- CSS -->
+<style>
+  .loader{
+    position: fixed;
+    inset: 0;               /* full screen */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: #1e90ff;    /* ganti warna di sini */
+    z-index: 9999;
+    transition: opacity .3s ease;
+  }
+  .loader.hidden{ opacity: 0; pointer-events: none; }
+  .spinner{
+    width: 48px;
+    height: 48px;
+    border-radius:50%;
+    border:6px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+</style>
+
+<!-- JS: sembunyikan saat halaman siap -->
+<script>
+  window.addEventListener('load', () => {
+    document.getElementById('loader').classList.add('hidden');
+    // atau remove element: document.getElementById('loader').remove();
+  });
+
+  // Kamu juga bisa ubah warna runtime:
+  function setLoaderColor(hex){
+    document.querySelector('.loader').style.background = hex;
+  }
+  // contoh: setLoaderColor('#ff4081');
+</script>
+  
